@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:youtube/telas/Biblioteca.dart';
+import 'package:youtube/telas/Inicio.dart';
+import 'package:youtube/telas/Inscricao.dart';
+import 'package:youtube/telas/emAlta.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -10,6 +14,7 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+    List<Widget> telas = [Inicio(), EmAlta(), Inscricao(), Biblioteca()];
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -42,7 +47,7 @@ class _HomeState extends State<Home> {
           )
         ],
       ),
-      body: Container(),
+      body: telas[_indiceAtual],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _indiceAtual,
         onTap: (indice) {
@@ -58,7 +63,7 @@ class _HomeState extends State<Home> {
           BottomNavigationBarItem(
               title: Text("Em alta"), icon: Icon(Icons.whatshot)),
           BottomNavigationBarItem(
-              title: Text("Inscrições"), icon: Icon(Icons.subscriptions)),
+              title: Text("Inscrição"), icon: Icon(Icons.subscriptions)),
           BottomNavigationBarItem(
               title: Text("Biblioteca"), icon: Icon(Icons.folder)),
         ],
