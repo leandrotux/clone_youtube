@@ -12,10 +12,16 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int _indiceAtual = 0;
+  String _resultado = "";
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> telas = [Inicio(), EmAlta(), Inscricao(), Biblioteca()];
+    List<Widget> telas = [
+      Inicio(_resultado),
+      EmAlta(),
+      Inscricao(),
+      Biblioteca()
+    ];
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -33,6 +39,9 @@ class _HomeState extends State<Home> {
             onPressed: () async {
               String res = await showSearch(
                   context: context, delegate: CustomSearchDelegate());
+              setState(() {
+                _resultado = res;
+              });
             },
           ),
           /*IconButton(
